@@ -1,0 +1,10 @@
+[project]
+name = "talks"
+version = "0.1.0"
+description = "Repo for my talks"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "chatlas>=0.9.0",
+    "google-genai>=1.25.0",
+]

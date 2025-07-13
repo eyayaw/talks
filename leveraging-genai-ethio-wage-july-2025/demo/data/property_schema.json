@@ -1,0 +1,63 @@
+{
+    "property_type": "str", // house, condo, apartment, land, apartment building, warehouse, office, shop, etc.
+    "property_use": "str", // commercial, residential, mixed
+    "listing_type": "str", // for sale, rent, or lease
+    "price": {
+        "value": "float", // property value or rent
+        "currency": "str", // ETB, USD
+        "unit": "str", // total, per sqm, per month, etc.
+        "type": "str" // fixed, negotiable, discounted, downpayment/installment, etc.
+    },
+    "address": { // The full address of the property
+        "original": "str", // The original address in the ad corrected for typos/mistakes.
+        "trans": "str" // Address transliterated in ascii characters. Retain the original address formats while ensuring readable transliterations.
+    },
+    "size": {
+        "floor_area": "float", // NB: "ካሬ (ሜትር)", (k/c)are, m², m2 denote sqm. This is the size of the land for the property type "land".
+        "plot_area": "float", // The total lot size, if applicable. Apartment buildings, detached houses, commercial buildings, warehouses, may have plot area info in addition to floor area.
+        "unit": "str" // sqm, sqft
+    },
+    "property_condition": "str", // old, new, renovated
+    "bedrooms": "int",
+    "bathrooms": "int",
+    "floors": "int",
+    "units": "int", // If applicable, for multi-unit buildings.
+    "year_built": "int",
+    "year_renovaed": "int",
+    "furnishing_status": "str", // e.g., un/semi/fully furnished
+    "floor": "int", // Floor number, for multi-story/family, flats
+    "has_basement": "bool",
+    "pets_allowed": "bool", // if applicable
+    "garage": "bool",
+    "parking": "bool",
+    "occupancy_status": "str", // vacant, occupied
+    "rental_yield": "float", // potential rental income estimate
+    "financing_options": "str", // mortgages, downpayments, installements
+    "features": "list[str]", // Detailed features of the property: balcony, gym, pool, backyard, garden
+    "utilities": "list[str]", // water, electricity, internet
+    "attractions": "list[str]", // Nearby poi
+    "accessibility": "list[str]", // e.g., walkability, bike, public transport
+    "view": "str", // mountain, city, park, waterfront
+    "description": "str", // beautiful, modern
+    "sustainability": {
+        "energy_rating": "str",
+        "solar_panels": "bool",
+        "ev_charging": "bool",
+        "green_certifications": "list[str]"
+    },
+    "utility_costs": {
+        "electricity_monthly": "float",
+        "gas_monthly": "float",
+        "water_monthly": "float"
+    },
+    "seller": {
+        "name": "str",
+        "type": "str", // owner, broker, agency
+        "contact": {
+            "phone": "str",
+            "other": "str" // e.g., telegram, email, website
+        },
+        "commission": "float" // as pct of property value
+    },
+    "remarks": "str" // any further relevant remark about the property
+}

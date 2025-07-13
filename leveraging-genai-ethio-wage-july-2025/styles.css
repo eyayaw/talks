@@ -1,0 +1,20 @@
+ /* These are Paul Goldsmith-Pinkham colors */
+ .red {
+     color: #D55E00;
+ }
+
+ .blue {
+     color: #0072B2
+ }
+
+ .green {
+     color: #009E73;
+ }
+
+ .yellow {
+     color: #F0E442;
+ }
+
+ details.inlined {
+    display: inline-block;
+ }

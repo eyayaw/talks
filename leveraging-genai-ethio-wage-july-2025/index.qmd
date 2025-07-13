@@ -1,0 +1,327 @@
+---
+title: "[Leveraging Gen AI]{.blue}"
+subtitle: "**_[Ethiopian]{.green} [Community]{.yellow} [Gathering]{.red}_**"
+date: "2025-07-13"
+date-format: long
+format:
+    revealjs:
+        slide-level: 2
+        slide-number: c
+        menu: false
+author:
+  - name: Eyayaw Beze
+    email: eyayaw@eyayaw.com
+html-math-method: katex
+css: styles.css
+code-line-numbers: false
+aspectratio: 169
+embed-resources: true
+---
+
+
+## Intro
+
+- ChatGPT (Nov 2022)
+
+    - Hallucinate, training cutoff
+    - Expensive and fewer options
+
+- State-of-the-Art (SOTA) Large Language Models (LLMs) are powerful and feature-rich
+    - Hallucinate less, realtime info, better instruction following
+    - Good at coding and complex problem-solving
+    - Multi-modal (text, images, audio, video)
+    - Tool use and reasoning, and agentic capabilities
+
+## Major Providers {.smaller}
+
+::: {.columns style="display: flex; height:100vh;"}
+::: {.column width="65%"}
+-  <img height="30" src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg" style="vertical-align: middle;"/> OpenAI^[OG] --- GPT [Models](https://platform.openai.com/docs/models) (4.1, o3)
+-  <img height="30" src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/anthropic.svg" style="vertical-align: middle;"/> Anthropic --- Claude [Models](https://docs.anthropic.com/en/docs/about-claude/models/overview) (Sonnet/Opus 4)
+-  <img height="30" src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/google-color.svg" style="vertical-align: middle;"/> Google --- Gemini [Models](https://ai.google.dev/gemini-api/docs/models) (2.5 Pro), [Gemma]{.green}
+-
+<img height="30" src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/xai.svg" style="vertical-align: middle;"/> xAI --- Grok [Models](https://docs.x.ai/docs/models) (4)
+-  <img height="30" src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/perplexity-color.svg"style="vertical-align: middle;"/> Perplexity --- Sonar
+-  <img height="30" src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/meta-color.svg" style="vertical-align: middle;"/> Meta --- [Llama]{.green} [Models](https://www.llama.com/) (4)
+-  <img height="30" src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/microsoft-color.svg" style="vertical-align: middle;"/> Microsoft --- [Phi]{.green}
+-  <img height="30" src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/mistral-color.svg" style="vertical-align: middle;"/> Mistral --- [Mistral]{.green}
+-  <img height="30" src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/alibaba-color.svg" style="vertical-align: middle;"/> Alibaba --- [Qwen]{.green}
+- <img height="30" src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/deepseek-color.svg" style="vertical-align: middle;"/> [Deepseek]{.green}[^green]
+
+:::
+
+::: {.column width="35%" style="display: flex !important; align-items: center !important;"}
+![](demo/pics/an-og-sets-the-name.png)
+:::
+
+:::
+[^green]: ["Open-source" models]{.green} (See [Ollama](https://ollama.com/) and [LM Studio](https://lmstudio.ai/))
+
+## Unlocking the power of LLMs {.smaller .scrollable}
+
+- Rich builtin features
+  - Chat, summarization, writing, translation, search, coding
+  - Canvas/Artifacts, projects, deep research, data analysis
+  - Agents, MCP, CLIs (Vibe coding)
+
+- Customizing llms ("context": adding knowledge)
+    - System instruction, RAG, tool use, MCP
+
+    $\rightarrow$ Endless use cases (tutor, career coach, ...)
+
+- My use cases
+
+  - Improving writing, and fixing grammar mistakes/typos<details class="inlined"><summary>Example</summary>[here are my questions 1,How could I wine the scholarship regarding your experience  2, What are the  easy ways to  get scholarships 3,If you have Templetes of documention prepartion to prepare my owen 4,If you Know sites to Apply scholarships 5,If you have any options which you advise me to get this chance.Thanks!!!]{.red}</details>
+
+  - Write a cover letter:
+
+    <details>
+    <summary>Prompt</summary>
+    ```md
+    You'll primarily act as a career coach, helping me write tailored cover letters based on the context provided in this project: CV, motivation statement, and dissertation summary. I'll provide the job description for each position. Please sound less robotic and avoid clichés, usual, flashy words and phrases. You do this task when I use the flag @cl.
+
+    Occasionally, you'll be asked to answer application form questions such as "Why this role?" In such cases, use the information provided in the project context to formulate appropriate responses. The flag for this task is @answer.
+
+    If you notice that I’m not eligible or a good fit for the position for any reason, please state it upfront.
+
+    PROVIDE ALL YOUR COMMENTARY AT THE BEGINNING. NO COMMENTARY SHOULD BE ADDED AFTER THE COVER LETTER.
+
+    <LINKS>
+    1. Project 1: https://github.com/eyayaw/housing-supply-elasticity-in-germany
+    2. Project 2: https://github.com/eyayaw/de-donut-effect
+    3. Project 3: https://github.com/eyayaw/the-monocentric-city-gradients-addis-ababa
+    4. Dissertation: https://github.com/eyayaw/dissertation
+    </LINKS>
+
+    <STYLE_GUIDE>
+    1. Use American English
+    2. DON'T USE punctuation inside quotations like <"Professionalism," and ...>, rather use <"Professionalism", and ...>.
+    3. MINIMIZE the use of bullet points and em dashes
+    </STYLE_GUIDE>
+
+    Please embed links, for research projects and the dissertation repo, in markdown format. If asked explicitly to output Typst, use this format #link("https://github.com/eyayaw/housing-supply-elasticity-in-germany")[housing supply elasticity].
+    ```
+    </details>
+
+----
+
+### Deep Research
+
+- An agent that does a multi-step research for complex tasks.
+
+::: {.callout-tip}
+### Research Assistant
+Browses the web and analyzes various sources on your behalf, assist you with your in-depth research.
+:::
+
+- Takes a prompt $\rightarrow$ drafts a research plan
+- Finds relevant resources (reasons + iteratively)
+- Provides a comprehensive report
+
+<details style="font-size:0.5em;">
+<summary>Resources</summary>
+- <https://openai.com/index/introducing-deep-research/>
+- <https://gemini.google/overview/deep-research/>
+- <https://www.perplexity.ai/hub/blog/introducing-perplexity-deep-research>
+</details>
+
+----
+
+::: {.callout-caution icon="false"}
+### **Question**❓
+Have you called llms outside of their chat interfaces?
+:::
+
+- OCR, structured data extraction
+- Copilot + agentic-coding (in IDEs), Vibe coding
+
+
+## Data Extraction {.smaller .scrollable}
+
+::: {.panel-tabset}
+
+## OCR
+
+- Document understanding: Digitize text from docs (images/scans, videos, PDFs etc.)
+
+::: columns
+
+::: {.column width="50%"}
+![[Blackboard: Ethiopia medical statistics, NTS, Mettu, 1972](https://nwcommons.nwciowa.edu/schuitemanethiopia/256/)](demo/pics/Blackboard%20-%20Ethiopia%20medical%20statistics%20NTS%20Mettu%20(dev.%201972)-schuitemanethiopia_256.JPG)
+:::
+
+::: {.column width="48%"}
+<details>
+<summary>Prompt</summary>
+[_Extract the data to a valid CSV format that is safe for parsing._]{.red }
+[_Output to a tidy (long)-format with columns: country, area, pop, hospitals, health_centers, health_stations, beds_]{.blue}
+</details>
+```txt
+Category, Ethiopia, USA
+Sq. Miles, 489239, 3608787
+Population, 25008631, 205000000
+Hospitals, 88 hospitals with 9449 beds,
+Health Centers, 81,
+Health Stations, 542 (bush clinics),
+```
+<details>
+<summary>R</summary>
+```{r}
+#| echo: fenced
+data = read.csv("demo/data/mettu_1972.csv")
+data_long = read.csv("demo/data/mettu_1972_long.csv")
+```
+
+::: {style="font-size:12pt;"}
+```{r}
+knitr::kable(data)
+```
+:::
+
+::: {style="font-size:12pt;"}
+```{r}
+knitr::kable(data_long)
+```
+:::
+
+</details>
+
+:::
+:::
+
+## Structured output
+
+- Unstructured data $\rightarrow$ Structured output
+
+    [Gemini API](https://ai.google.dev/gemini-api/docs/structured-output): Provide a schema (`responseSchema`), or in a text prompt
+
+<details>
+<summary>real_estate_ad</summary>
+```py
+"""ሁል የተሟላለት ቅንጡ የመኖሪያ ቤት ኪራይ ሲምሲ ኮፓውንድ ውስጥ ካሬ ሜትር 600
+መኝታ ቤት 6 ሳሎን 2 ኪችን2 ሻውር ሽንት ቤት 5 በቂ የመናፈሻ ስፍራ መኪና ማቆሚያ 6
+ዋጋ140 ሽ ኮሚሽን 10% 0911067686x"""
+```
+</details>
+
+
+<details>
+<summary>\<json_output\></summary>
+```json
+{
+         "property_type": "house",
+         "property_use": "residential",
+         "listing_type": "rent",
+         "price": {
+             "value": 140000.0,
+             "currency": "ETB",
+             "unit": "per month"
+         },
+         "address": {
+             "original": "ሲኤምሲ ኮምፓውንድ",
+             "transliterated": "CMC Compound"
+         },
+         "size": {
+             "plot_area": 600.0,
+             "unit": "sqm"
+         },
+         "property_condition": "excellent",
+         "bedrooms": 6,
+         "bathrooms": 5,
+         "furnishing_status": "fully-furnished",
+         "structural_features": {
+             "has_parking": true,
+             "parking_spaces": 6,
+             "has_garden": true
+         },
+         "seller": {
+             "type": "broker",
+             "contact": {
+                 "phone": "0911067686"
+             },
+             "commission": 10.0
+         },
+         "description": "Fully equipped luxury residential house for rent located inside CMC compound. The property has 6 bedrooms, 5
+ bathrooms, 2 living rooms, and 2 kitchens. It includes ample garden space and parking for 6 vehicles.",
+         "remarks": "The advertisement explicitly mentions 2 living rooms and 2 kitchens, which are notable features."
+     }
+ ```
+</details>
+
+</details>
+
+:::
+
+
+## Advanced usage
+
+1. AI Playgrounds:
+
+    - OpenAI: <https://platform.openai.com/playground>
+    - Google: <https://aistudio.google.com>
+    - ⁠Anthropic: <https://console.anthropic.com/dashboard>
+
+2. Code CLIs (programming)
+
+    - [OpenAI Codex CLI](https://github.com/openai/codex)
+    - [Google Gemini CLI](https://github.com/google-gemini/gemini-cli)
+    - [Anthropic Claude Code](https://github.com/anthropics/claude-code)
+
+## Discussion
+
+<br><br>
+
+
+<details>
+<summary>Ideas</summary>
+1. What are your use cases? What role does it play in your field?
+2. Do you think AI will take our jobs?
+3. What role does AI play in economic development?
+    - Ethiopia $\notin$ [Anthropic supported countries \& regions](https://www.anthropic.com/supported-countries)
+</details>
+
+
+# Appendix {.appendix}
+
+## LLM Benchmarks and Leaderboards {.scrollable}
+
+### Benchmarks
+
+- **Humanity's Last Exam**, a multi-modal benchmark at the frontier of human knowledge, 2,500 challenging questions across over 100 subjects. ([Dataset](https://huggingface.co/datasets/cais/hle))
+
+- **MMLU -- Measuring Massive Multitask Language Understanding** ([Dataset][hf-mmlu])
+
+  57 subjects (STEM, law, etc.), 16k multiple-choice questions, checks breadth of factual knowledge and multiple-choice reasoning accuracy.
+
+- **BIG-Bench** (+ variants): 204 tasks, diverse topics (including tasks which quantify social bias in language models) ([Repo](https://github.com/google/BIG-bench), [BBH](https://github.com/suzgunmirac/BIG-Bench-Hard)), task contribution from the community
+
+- **ARC Challenge** "ARC-AGI is the only AI benchmark that tests for general intelligence by testing not just for skill, but for skill acquisition."
+
+- **LongBench v2**: Benchmarking deeper understanding and reasoning on realistic long-context multitasks. (See also [Needle-in-a-Haystack](test in-context retrieval ability of long context LLMs))
+
+  > Contexts up to 2 M words across QA, summarisation, code-repo understanding; probes long-context recall, retrieval and deep reasoning.
+
+### Leaderboards
+
+- [Artificial Analysis](https://artificialanalysis.ai/leaderboards/models): Comparison of over 100 AI models
+- [LMArena](https://lmarena.ai/leaderboard): based on 3.5M blind user votes $\rightarrow$ what the general ai community thinks is the "best model".<details><summary>Benchmarks can be reverse-engineered</summary>Companies could easily include questions and answers into their models' training data. (See [MMLU's limitation][wiki-mmlu])</details>
+
+- [ARC Prize](https://arcprize.org/leaderboard)
+
+### Considerations
+- The problem you are going to solve.
+- Performance, speed, and cost of the model
+
+<!-- [ibm]: https://youtu.be/pYax2rupKEY?si=15Qxxb7RkGiq-NwI -->
+
+[hf-mmlu]: https://huggingface.co/datasets/cais/mmlu
+
+[wiki-mmlu]: https://en.wikipedia.org/wiki/MMLU#Limitations
+
+----
+
+![](demo/pics/Artificial%20Analysis%20Intelligence%20Index_2025-07-12.png)
+
+----
+
+![](demo/pics/arc-prize-leaderboard.png)
